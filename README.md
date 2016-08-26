@@ -1,0 +1,2 @@
+# packagist-compare
+Compare utility.
