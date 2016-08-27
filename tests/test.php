@@ -12,6 +12,7 @@ $root = dirname(dirname(__FILE__));
 Compare::setRootPath($root);
 Compare::setScanList([ $root ]);
 
+Compare::setIgnoreEveryList(['.git']);
 Compare::setIgnoreList([ $root.'/vendor']);
 
 Compare::dump(Compare::getScanList());

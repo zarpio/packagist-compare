@@ -70,22 +70,22 @@ class Compare
         return self::$scanList;
     }
 
-    public function setIgnoreList(array $ignoreList)
+    public static function setIgnoreList(array $ignoreList)
     {
         self::$ignoreList = $ignoreList;
     }
 
-    public function getIgnoreList()
+    public static function getIgnoreList()
     {
         return self::$ignoreList;
     }
 
-    public function setIgnoreEveryList(array $ignoreEveryList)
+    public static function setIgnoreEveryList(array $ignoreEveryList)
     {
         self::$ignoreEveryList = $ignoreEveryList;
     }
 
-    public function getIgnoreEveryList()
+    public static function getIgnoreEveryList()
     {
         return self::$ignoreEveryList;
     }
@@ -121,13 +121,18 @@ class Compare
 
                     $file  = $dir.$file;
                     if (is_dir($file)) {
-                        $directory_path = $file.DIRECTORY_SEPARATOR;
+                        $directory_path = $file.'/';
                         array_push($directories, $directory_path);
                         // $files['dirs'][]  = $directory_path;
                         $files['dirs'][]  = str_replace(self::getRootPath(), '', $directory_path);
                     } elseif (is_file($file)) {
                         // $files['files'][]  = $file;
-                        $files['files'][]  = str_replace(self::getRootPath(), '', $file);
+                        //$files['files'][]  = str_replace(self::getRootPath(), '', $file);
+
+                        $files['files'][md5($file)] = array(
+                            'path' => str_replace(self::getRootPath(), '', $file),
+                            'hash' => hash_file('md5', $file),
+                        );
                     }
                 }
                 closedir($handle);
