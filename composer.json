@@ -1,0 +1,13 @@
+{
+    "name": "khalil/compare",
+    "description": "Compare your project files.",
+    "type": "utility",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Muhammad Khalil",
+            "email": "zarpio@gmail.com"
+        }
+    ],
+    "require": {}
+}
